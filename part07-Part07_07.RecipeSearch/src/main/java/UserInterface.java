@@ -1,4 +1,5 @@
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,9 +17,34 @@ public class UserInterface {
     private Scanner scanner;
     private ArrayList<Recipes> recipes;
 
-    public UserInterface(ArrayList<Recipes> recipes, Scanner scan) {
-        this.recipes = recipes;
+    public UserInterface(Scanner scan) {
+        this.recipes = new ArrayList<>();
         this.scanner = scan;
+        readRecordsFromFile();
+    }
+    
+    public void readRecordsFromFile() {
+        System.out.println("File to read: ");
+        String file = this.scanner.nextLine();
+
+        try ( Scanner scan = new Scanner(Paths.get(file))) {
+            while (scan.hasNextLine()) {
+                String name = scan.nextLine();
+                int cookingTime = Integer.valueOf(scan.nextLine());
+                ArrayList<String> ingredients = new ArrayList<>();
+
+                while (scan.hasNextLine()) {
+                    String ingredient = scan.nextLine();
+                    if (ingredient.isEmpty()) {
+                        break;
+                    }
+                    ingredients.add(ingredient);
+                }
+                this.recipes.add(new Recipes(name, cookingTime, ingredients));
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public void start() {
