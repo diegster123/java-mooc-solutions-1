@@ -54,8 +54,7 @@ public class Grades {
         return 100.0 * this.passingGrades.size() / this.grades.size();
     }
 
-    public void printGradeDistribution() {
-
+    public int[] gradeDistribution() {
         int[] distribution = new int[6];
 
         for (int points : this.grades) {
@@ -73,15 +72,26 @@ public class Grades {
                 distribution[0]++;
             }
         }
-        System.out.println("Grade Distribution: ");
+        return distribution;
+    }
 
-        for (int i = 5; i >= 0; i--) {
-            System.out.print(i + ": ");
-            for (int j = 0; j < distribution[i]; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
+    public String starDistribution(int count) {
+        String stars = "";
+
+        for (int i = 0; i < count; i++) {
+            stars += "*";
         }
 
+        return stars;
+    }
+
+    public void printGradeDistribution() {
+        int[] distribution = gradeDistribution();
+
+        System.out.println("Grade distribution:");
+
+        for (int i = 5; i >= 0; i--) {
+            System.out.println(i + ": " + starDistribution(distribution[i]));
+        }
     }
 }
