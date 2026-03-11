@@ -77,21 +77,18 @@ public class Grades {
 
     public String starDistribution(int count) {
         String stars = "";
-
         for (int i = 0; i < count; i++) {
             stars += "*";
         }
-
         return stars;
     }
-
+    
     public void printGradeDistribution() {
-        int[] distribution = gradeDistribution();
-
-        System.out.println("Grade distribution:");
-
+        int[] array = gradeDistribution();
+        
         for (int i = 5; i >= 0; i--) {
-            System.out.println(i + ": " + starDistribution(distribution[i]));
+            System.out.println(i + ":" + starDistribution(array[i]));
         }
     }
 }
+
