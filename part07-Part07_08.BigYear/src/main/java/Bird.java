@@ -24,11 +24,19 @@ public class Bird {
         this.observations = 0;
     }
     
-    public ArrayList<String> getBird() {
-        return this.birds;
+    public String getBird() {
+        return this.name;
+    }
+    
+    public void addObservation() {
+       this.observations += 1;
+    }
+    
+    public int getObservation() {
+        return this.observations;
     }
     
     public String toString() {
-        return this.name + "(" + this.latinName + "): " + this.observations + " observations";
+        return this.name + " (" + this.latinName + "): " + getObservation() + " observations";
     }
 }

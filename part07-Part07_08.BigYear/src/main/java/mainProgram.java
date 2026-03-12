@@ -30,6 +30,13 @@ public class mainProgram {
             }
             if (input.equals("Observation")) {
 //                observe(); IMPLEMENT METHOD
+                System.out.println("Bird? ");
+                String name = scan.nextLine();
+                for (Bird bird : birdList) {
+                    if (bird.getBird().contains(name)) {
+                        bird.addObservation();
+                    }
+                }
             }
             if (input.equals("All")) {
 //                printAllBirds(); IMPLEMENT METHOD
