@@ -12,13 +12,11 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class Bird {
-    private ArrayList<String> birds;
     private String name;
     private String latinName;
     private int observations;
     
     public Bird(String name, String latinName) {
-        this.birds = new ArrayList<>();
         this.name = name;
         this.latinName = latinName;
         this.observations = 0;
@@ -32,11 +30,7 @@ public class Bird {
        this.observations += 1;
     }
     
-    public int getObservation() {
-        return this.observations;
-    }
-    
     public String toString() {
-        return this.name + " (" + this.latinName + "): " + getObservation() + " observations";
+        return this.name + " (" + this.latinName + "): " + this.observations + " observations";
     }
 }

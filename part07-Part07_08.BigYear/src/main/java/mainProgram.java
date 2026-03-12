@@ -15,7 +15,7 @@ public class mainProgram {
 //            Implement as ui.start()
             System.out.println("? ");
             String input = scan.nextLine();
-            
+
             if (input.equals("Quit")) {
                 break;
             }
@@ -32,10 +32,16 @@ public class mainProgram {
 //                observe(); IMPLEMENT METHOD
                 System.out.println("Bird? ");
                 String name = scan.nextLine();
+                boolean found = false;
                 for (Bird bird : birdList) {
-                    if (bird.getBird().contains(name)) {
+                    if (bird.getBird().equals(name)) {
                         bird.addObservation();
+                        found = true;
+                        break;
                     }
+                }
+                if (!found) {
+                    System.out.println("Not a bird!");
                 }
             }
             if (input.equals("All")) {
@@ -46,6 +52,13 @@ public class mainProgram {
             }
             if (input.equals("One")) {
 //                printOneBird(); IMPLEMENT METHOD
+                System.out.println("Bird? ");
+                String name = scan.nextLine();
+                for (Bird bird : birdList) {
+                    if (bird.getBird().equals(name)) {
+                        System.out.println(bird);
+                    }
+                }
             }
         }
 
